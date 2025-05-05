@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: knn-api-service
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: MODEL_API_KEY
+        value: secret123
+  
