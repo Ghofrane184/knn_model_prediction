@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🚨 Intrusion Detection Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🛡️ Intrusion Detection – Predict Attack</h1>
+
+    <form method="post">
+      <label>Network Packet Size:</label>
+      <input type="number" name="network_packet_size" required>
+
+      <label>Protocol Type:</label>
+      <select name="protocol_type" required>
+        <option value="TCP">TCP</option>
+        <option value="UDP">UDP</option>
+        <option value="ICMP">ICMP</option>
+      </select>
+
+      <label>Login Attempts:</label>
+      <input type="number" name="login_attempts" required>
+
+      <label>Session Duration (seconds):</label>
+      <input type="number" name="session_duration" step="any" required>
+
+      <label>Encryption Used:</label>
+      <select name="encryption_used" required>
+        <option value="AES">AES</option>
+        <option value="None">None</option>
+        <option value="RSA">RSA</option>
+      </select>
+
+      <label>IP Reputation Score:</label>
+      <input type="number" name="ip_reputation_score" step="any" required>
+
+      <label>Failed Logins:</label>
+      <input type="number" name="failed_logins" required>
+
+      <label>Browser Type:</label>
+      <select name="browser_type" required>
+        <option value="Chrome">Chrome</option>
+        <option value="Firefox">Firefox</option>
+        <option value="Safari">Safari</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>Unusual Time Access (0 or 1):</label>
+      <input type="number" name="unusual_time_access" min="0" max="1" required>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+      <strong>Prediction Result:</strong> {{ result }}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
